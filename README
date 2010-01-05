@@ -38,16 +38,30 @@ script/generate fact sales
 
 rake db:migrate
 
+== Prep warehouse
+
 $ rake warehouse:migrate
+
+Build date dimension
+# copy active_warehouse_tasks.rake into lib/tasks
+$ rake warehouse:build_date_dimension START_DATE='01/01/2009'
 
 == ETL processing
 
 $ etl db/etl/product_dimension.ctl
 $ etl db/etl/customer_dimension.ctl
+$ etl db/etl/sales_facts.ctl
 
-Build date dimension
-# copy active_warehouse_tasks.rake into lib/tasks
-$ rake warehouse:build_date_dimension START_DATE='01/01/2009'
+
+
+== build a cube
+Ensure dimension and Fact models correctly annotated
+
+$ script/generate cube SalesByProduct
+
+$ script/generate controller SalesByProductReports index
+
+
 
 == UI
 
