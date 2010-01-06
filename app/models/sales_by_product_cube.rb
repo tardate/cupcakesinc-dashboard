@@ -1,5 +1,5 @@
 class SalesByProductCube < ActiveWarehouse::Cube
-  reports_on :sale_price
-  pivots_on :date, :product
+  reports_on :sales
+  pivots_on :date, {:product => :name} #({:date => :cy}, {:product => :name})
  
 end
