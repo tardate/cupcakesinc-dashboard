@@ -22,7 +22,7 @@ after_read do |row|
 	row 
 end
 #before_write :surrogate_key, :target => :cupcake_development, :table => 'orders', :column => 'id'
-
+before_write :copy_field, :destination => :sale_price, :source => :unit_price
 
 destination :out, {
   :type => :database,
