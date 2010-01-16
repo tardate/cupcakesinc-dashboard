@@ -111,7 +111,7 @@ This simplifies cross-application database communication somewhat. Note that Act
 	$ mysqladmin -uroot -p create cupcake_development
 	$ mysqladmin -uroot -p create cupcake_test
 
-=== create basic structures
+=== create basic app structure
 
 Just some icing on the cupcake using Ryan Bates' nifty-generators NB: the nifty-generators gem does not need to be installed unless you want to run the generators again..
 
@@ -126,7 +126,13 @@ Just some icing on the cupcake using Ryan Bates' nifty-generators NB: the nifty-
 	$ script/generate nifty_scaffold order customer_id:integer order_date:datetime
 	$ script/generate nifty_scaffold order_item order_id:integer product_id:integer qty:integer unit_price:decimal
 
-=== demo activewarehouse to load database from csv
+=== native reports module
+
+Not used yet. Was intending to include standard Rails report implementations here for comparison to the ActiveWarehouse-based reports.
+ 
+	$ script/generate controller reports index
+
+=== demo loading database from csv using ActiveWarehouse-ETL
 
 Install the ETL gem:
 
@@ -137,13 +143,6 @@ ActiveWarehouse ETL depends on ActiveSupport, ActiveRecord, adapter_extensions a
 create ETL execution database and add defintiion to config/database.yml
 
 	$ mysqladmin -uroot -p create etl_execution
-
-
-=== native reports module
-
-ruby script/generate controller reports index
-
-
 
 === ETL Processing
 
