@@ -7,7 +7,7 @@ class SalesByProductReportsController < ApplicationController
 	@report.column_dimension_name = :date
 	@report.row_dimension_name = :product
 
-	@report_view = @report.view( {}, :with_totals => true)
+	@report_view = @report.view( params, :with_totals => true)
   end
 
 end
